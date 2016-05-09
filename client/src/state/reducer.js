@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import galleryReducer from './gallery/GalleryReducer';
 import queuedFilesReducer from './queuedFiles/QueuedFilesReducer';
 import editorReducer from './editor/EditorReducer';
+import breadcrumbsReducer from 'state/breadcrumbs/BreadcrumbsReducer';
 
 /**
  * Operates on the Redux store to update application state.
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     gallery: galleryReducer,
     editor: editorReducer,
     queuedFiles: queuedFilesReducer,
+    breadcrumbs: breadcrumbsReducer
   }),
 });
 

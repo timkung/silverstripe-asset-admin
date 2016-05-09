@@ -4,9 +4,11 @@ import { default as Gallery } from 'containers/Gallery/Gallery';
 import Editor from 'containers/Editor/Editor';
 import * as galleryActions from 'state/gallery/GalleryActions';
 import * as editorActions from 'state/editor/EditorActions';
+import * as breadcrumbsActions from 'state/breadcrumbs/BreadcrumbsActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Config from 'lib/Config';
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb';
 
 class AssetAdmin extends SilverStripeComponent {
   constructor(props) {
@@ -144,6 +146,7 @@ class AssetAdmin extends SilverStripeComponent {
   render() {
     return (
       <div className="gallery">
+        <Breadcrumb crumbs={this.props.breadcrumbs} />
         <Gallery
           name={this.props.name}
           limit={this.props.limit}
@@ -181,6 +184,7 @@ function mapStateToProps(state) {
     folderID: state.assetAdmin.gallery.folderID,
     folderFiles: state.assetAdmin.gallery.files,
     fileID: state.assetAdmin.editor.fileID,
+    breadcrumbs: state.assetAdmin.breadcrumbs
   };
 }
 
@@ -189,6 +193,7 @@ function mapDispatchToProps(dispatch) {
     actions: {
       gallery: bindActionCreators(galleryActions, dispatch),
       editor: bindActionCreators(editorActions, dispatch),
+      breadcrumbs: bindActionCreators(breadcrumbsActions, dispatch),
     },
   };
 }
